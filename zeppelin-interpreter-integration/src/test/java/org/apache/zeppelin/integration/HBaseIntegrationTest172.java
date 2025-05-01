@@ -14,23 +14,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.apache.zeppelin.utils;
 
-import jakarta.ws.rs.core.Response.Status;
+package org.apache.zeppelin.integration;
 
-import org.apache.zeppelin.server.JsonResponse;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
 
-/**
- * Utility method for exception in rest api.
- *
- */
-public class ExceptionUtils {
+public class HBaseIntegrationTest172 {
 
-  public static jakarta.ws.rs.core.Response jsonResponse(Status status) {
-    return new JsonResponse<>(status).build();
+  @Nested
+  @DisplayName("HBase 1.x")
+  public class HBase172 extends HBaseIntegrationTest {
+
+    @BeforeEach
+    public void downloadHBase() {
+      prepareHBase("1.7.2");
+    }
   }
 
-  public static jakarta.ws.rs.core.Response jsonResponseContent(Status status, String message) {
-    return new JsonResponse<>(status, message).build();
-  }
 }
